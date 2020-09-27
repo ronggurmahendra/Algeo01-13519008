@@ -1,5 +1,7 @@
 package com.Algeo;
 
+import java.util.Scanner;
+
 public class Determinan {
     public double kofaktor(double[][] MatriksInput) {
         if (MatriksInput[0].length != MatriksInput.length){
@@ -95,5 +97,29 @@ public class Determinan {
 
 
         //return this.kofaktor(MatriksInput);
+    }
+    public static double[][] bacaMatriks() {
+        Scanner myObj = new Scanner(System.in);
+        System.out.print("Masukan Jumlah Kolom : ");
+        int kolom = myObj.nextInt();  // Read user input
+        System.out.print("Masukan Jumlah Baris : ");
+        int baris = myObj.nextInt();  // Read user input
+        double matriks[][] = new double[baris][kolom];
+        for(int i = 0; i< baris;i++){
+            for(int j = 0;j<kolom;j++){
+                //System.out.print(String.format("Masukan Matriks[%d][%d] = ", i, j));
+                matriks[i][j] = myObj.nextDouble();
+            }
+        }
+        myObj.close();
+        return matriks;
+    }
+    public static void tulisMatriks(double[][] matriks){
+        for (int i = 0; i < matriks.length;i++){
+            for (int j = 0; j < matriks[i].length;j++){
+                System.out.printf("%.2f ",matriks[i][j]);
+            }
+            System.out.println();
+        }
     }
 }

@@ -1,46 +1,86 @@
 package com.Algeo;
 import java.util.Scanner;
-import com.Algeo.Determinan   ;
-//import package Determinan;
+
 public class Main {
 
     public static void main(String[] args) {
-	    System.out.println("Initilizing main");
-        Determinan determinan = new Determinan();
-	    double[][] matriks;
-	    matriks = bacaMatriks();
-        tulisMatriks(matriks);
-        /*
-        System.out.print("Determinan Matriks dengan kofaktor = ");
-        System.out.println(determinan.kofaktor(matriks));
-        System.out.print("Determinan Matriks dengan OBE = ");
-        System.out.println(determinan.OBE(matriks));
-        
-         */
+        Menu();
     }
+    public static void Menu(){
+        System.out.println("MENU");
+        System.out.println("1. Sistem Persamaan Linier");
+        System.out.println("2. Determinan");
+        System.out.println("3. Matriks balikan");
+        System.out.println("4. Interpolasi Polinom");
+        System.out.println("5. Regresi linier berganda");
+        System.out.println("6. Keluar");
 
-    public static double[][] bacaMatriks() {
-        Scanner myObj = new Scanner(System.in);
-        System.out.print("Masukan Jumlah Kolom : ");
-        int kolom = myObj.nextInt();  // Read user input
-        System.out.print("Masukan Jumlah Baris : ");
-        int baris = myObj.nextInt();  // Read user input
-        double matriks[][] = new double[baris][kolom];
-        for(int i = 0; i< baris;i++){
-            for(int j = 0;j<kolom;j++){
-                System.out.print(String.format("Masukan Matriks[%d][%d] = ", i, j));
-                matriks[i][j] = myObj.nextDouble();
-            }
-        }
-        myObj.close();
-        return matriks;
-    }
-    public static void tulisMatriks(double[][] matriks){
-        for (int i = 0; i < matriks.length;i++){
-            for (int j = 0; j < matriks[i].length;j++){
-                System.out.printf("%.2f ",matriks[i][j]);
-            }
-            System.out.println();
+        Scanner menu = new Scanner(System.in);
+        int input = menu.nextInt();
+        switch (input){
+            case 1:
+                //program SPL
+                System.out.println("1. Metode eliminasi Gauss");
+                System.out.println("2. Metode eliminasi Gauss-Jordan");
+                System.out.println("3. Metode matriks balikan");
+                System.out.println("4. Kaidah Cramer");
+                int inputSPL = menu.nextInt();
+                switch (inputSPL){
+                    case 1:
+                        //masukin program SPL Metode eliminasi Gauss
+
+                        break;
+                    case 2:
+                        //masukin program SPL Metode eliminasi Gauss-Jordan
+
+                        break;
+                    case 3:
+                        //masukin program SPL Metode matriks balikan
+
+                        break;
+                    case 4:
+                        //masukin program SPL Kaidah Cramer
+
+                        break;
+                }
+
+
+                break;
+            case 2:
+                //program Determinan
+                System.out.println("1.Metode kofaktor");
+                System.out.println("2. Metode OBE");
+                Scanner scannerDeterminan = new Scanner(System.in);
+                int inputDeterminan = scannerDeterminan.nextInt();
+                Determinan determinan = new Determinan();
+                double[][] matriks;
+                matriks = determinan.bacaMatriks();
+                //determinan.tulisMatriks(matriks);
+                if (inputDeterminan == 1){
+                    System.out.print("Determinan Matriks dengan kofaktor = ");
+                    System.out.println(determinan.kofaktor(matriks));
+                }else if (inputDeterminan == 2){
+                    System.out.print("Determinan Matriks dengan OBE = ");
+                    System.out.println(determinan.OBE(matriks));
+                }
+                break;
+            case 3:
+                //program Matriks Balikan
+
+                break;
+            case 4:
+                //program Interpolasi Polinom
+
+                break;
+            case 5:
+                //program Regresi linier berganda
+
+                break;
+            case 6:
+                //Keluar
+                System.exit(0);
+                break;
+
         }
     }
 }
