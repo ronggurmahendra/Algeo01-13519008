@@ -42,6 +42,58 @@ public class Determinan {
 
     }
     public double OBE(double[][] MatriksInput){
-        return this.kofaktor(MatriksInput);
+        int i,j,k;
+        double[][] a = new double[MatriksInput.length+1][MatriksInput.length+1];
+        int cntswap;
+        double tmp;
+        float ret;
+        boolean found;
+        //salin Matriks
+        for (i = 0;i<MatriksInput.length;i++){
+            for(j = 0;j<MatriksInput.length;j++){
+                a[i][j] = MatriksInput[i][j];
+            }
+        }
+        //buat matriks segitiga atas
+        cntswap = 0;
+        for (i = 0;i<MatriksInput.length;i++){
+            if(Math.abs(a[i][i])>1e-14){
+                found = false;
+                j = i+1;
+                while(j<= MatriksInput.length && !found){
+                    if(Math.abs(a[j][i])>1e-14){
+                        found = true;
+                        cntswap++;
+                        for(k=i;k<MatriksInput.length;k++){
+                            tmp=a[i][k];
+                            a[i][k]=a[j][k];
+                            a[j][k]=tmp;
+                        }
+                    }
+                    j++;
+                }
+            }
+            if(Math.abs(a[i][i])>1e-7){
+                for(j=i+1;j<MatriksInput.length;j++){
+                    tmp = a[j][i]/a[i][i];
+                    for(k=i;k<MatriksInput.length;k++){
+                        a[j][k]-=a[i][k]*tmp;
+                    }
+                }
+            }
+
+        }
+        //kalikan diagonal
+        ret = 1;
+        for(i = 0;i<MatriksInput.length;i++){
+            if(Math.abs(a[i][i])>1e-14) ret *= a[i][i];
+            else return 0;
+        }
+        if (cntswap%2 == 1) ret*= -1;
+        return ret;
+
+
+
+        //return this.kofaktor(MatriksInput);
     }
 }

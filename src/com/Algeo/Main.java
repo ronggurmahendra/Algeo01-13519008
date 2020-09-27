@@ -10,8 +10,13 @@ public class Main {
 	    double[][] matriks;
 	    matriks = bacaMatriks();
         tulisMatriks(matriks);
+        /*
         System.out.print("Determinan Matriks dengan kofaktor = ");
         System.out.println(determinan.kofaktor(matriks));
+        System.out.print("Determinan Matriks dengan OBE = ");
+        System.out.println(determinan.OBE(matriks));
+        
+         */
     }
 
     public static double[][] bacaMatriks() {
