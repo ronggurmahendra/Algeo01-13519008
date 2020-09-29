@@ -1,7 +1,8 @@
-package tubes1algeo;
+//package tubes1algeo;
+package com.Algeo;
 import java.util.Scanner;
 
-import buram.Matriks;
+//import buram.Matriks;
 
 public class MatSPL {
 	void isiMatriks(double[][] Mat, int baris, int kolom) {

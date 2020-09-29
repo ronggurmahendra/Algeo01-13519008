@@ -16,6 +16,7 @@ public class Main {
         System.out.println("6. Keluar");
 
         Scanner menu = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         int input = menu.nextInt();
         switch (input){
             case 1:
@@ -96,7 +97,27 @@ public class Main {
                 break;
             case 5:
                 //program Regresi linier berganda
+                RegresiLinear regresiLinear = new RegresiLinear();
+                //Determinan wkwk = new Determinan();
+                double[][] matriksRegresi;
 
+                //matriksRegresi = {[1,1,1,1],[1,1,10,12],[1,2,1,18],[1,3,2,24],[1,4,3,30]};
+                matriksRegresi = regresiLinear.bacaSPL();
+                //wkwk.tulisMatriks(matriksRegresi);
+                double[] hasil;
+                hasil = regresiLinear.regresiLinear(matriksRegresi);
+                System.out.print("y = ");
+                for(int i = 0;i < hasil.length;i++){
+                    System.out.print(hasil[i]);
+                    System.out.print("X");
+                    System.out.print(i);
+                    if(i != hasil.length-1){
+                        System.out.print(" +");
+                    }
+
+                }
+
+                //System.out.print(hasil[hasil.length]);
                 break;
             case 6:
                 //Keluar
