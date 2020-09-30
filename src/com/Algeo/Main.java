@@ -52,11 +52,33 @@ public class Main {
 							/* menampilkan solusi SPL */
 							M.solusiSPLGauss(Mat, baris, kolom);
 						} 
-						// else {} -- belum :)
+						//else{}
 
                         break;
                     case 2:
-                        //masukin program SPL Metode eliminasi Gauss-Jordan
+                        /* pilih masukan dari keyboard atau file text */
+						System.out.println("Pilih metode masukan: ");
+						System.out.println("1. Masukan dari keyboard");
+						System.out.println("2. Masukan dari file txt");
+						System.out.println("-------------------------");
+						System.out.print("Metode masukan: ");
+						int opsi = sc.nextInt();
+						
+						if (opsi == 1) {
+							/* masukan jumlah baris dan kolom */
+							System.out.print("Masukkan banyak persamaan: ");
+							int baris = sc.nextInt();
+							System.out.print("Masukkan banyak variabel: ");
+							int kolom = sc.nextInt()+1;
+							/* membuat matriks */
+							MatSPL M = new MatSPL();
+							double[][] Mat = new double [baris][kolom];
+							/* membaca isi matriks */
+							M.isiMatriks(Mat, baris, kolom);
+							/* menampilkan solusi SPL */
+							M.solusiSPLGaussJordan(Mat, baris, kolom);
+						} 
+						// else {} -- belum :)
 
                         break;
                     case 3:
@@ -67,6 +89,28 @@ public class Main {
                         break;
                     case 4:
                         //masukin program SPL Kaidah Cramer
+						/* pilih masukan dari keyboard atau file text */
+						System.out.println("Pilih metode masukan: ");
+						System.out.println("1. Masukan dari keyboard");
+						System.out.println("2. Masukan dari file txt");
+						System.out.println("-------------------------");
+						System.out.print("Metode masukan: ");
+						int opsi = sc.nextInt();
+						
+						if (opsi == 1) {
+							/* masukan jumlah baris dan kolom */
+							System.out.print("Masukkan banyak persamaan & variabel: ");
+							int baris = sc.nextInt();
+							int kolom = baris+1;
+							/* membuat matriks */
+							MatSPL M = new MatSPL();
+							double[][] Mat = new double [baris][kolom];
+							/* membaca isi matriks */
+							M.isiMatriks(Mat, baris, kolom);
+							/* menampilkan solusi SPL */
+							M.solusiSPLCramer(Mat, baris, kolom);
+						} 
+						// else {} -- belum :)
 
                         break;
                 }

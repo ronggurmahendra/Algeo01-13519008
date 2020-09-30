@@ -9,7 +9,14 @@ public class MatSPL {
 		System.out.println("isi matriks: ");
 		Scanner sc = new Scanner(System.in);
 		for (i=0; i<baris; i++) {
+			System.out.println(String.format("Masukkan persamaan ke-%d :",i+1));
 			for (j=0; j<kolom; j++) {
+				if (j!=kolom-1){
+					System.out.print(String.format("x%d = ",j+1));
+				}
+				else{
+					System.out.print("Hasil = ");
+				}
 				Mat[i][j] = sc.nextDouble();
 			}
 		}
@@ -44,7 +51,7 @@ public class MatSPL {
 		}
 		i = 0;
 		kolref=i;
-		while (i<(baris-countBrsNol)) {
+		while (i<(baris-countBrsNol) && kolref<kolom) {
 			if (barisPatokan(Mat,i,kolref, baris)!=baris) {
 				if (barisPatokan(Mat,i,kolref, baris)!=i) {
 					tukarBaris(Mat,i,barisPatokan(Mat,i,kolref, baris),kolom);
@@ -175,65 +182,74 @@ public class MatSPL {
 
 	void solusiSPLGauss(double[][] Mat, int baris, int kolom) {
 		matriksEselonBaris(Mat, baris, kolom);
-		double[] x = new double[kolom-1];
-		String[] sol = new String[kolom-1];
-		for (int j=0; j<kolom-1; j++) {
-			sol[j]="_";
-		}
-		int kodeParam = 122;
-		int i=baris-1;
-		while (i>=0) {
-			if (barisNol(Mat,kolom,i)) {
-				i=i-1;
+		int countBrsNol = 0;
+		int i = 0;
+		while (i<baris-countBrsNol) {
+			if (barisNol(Mat, kolom, i)) {
+				countBrsNol +=1;
 			}
-			else{
-				int idx = pertamaBrsBukanNol(Mat,i,kolom);
-				if (idx==kolom-1) {
-					i=-1;
-				}
-				else if (banyakBukanNolBaris(Mat,i,kolom)==1){
-					x[idx]=Mat[i][kolom-1];
-					sol[idx] ="$";
-				}
-				else {
-					if (banyakBukanNolBaris(Mat,i,kolom)==banyak$SesudahElArr(sol,idx,kolom)+1) {
-						double jum = Mat[i][kolom-1];
-						for (int j=idx+1; j<kolom-1; j++) {
-							jum =  jum - (Mat[i][j]*x[j]);
-						}
-						x[idx]=jum;
-						sol[idx]="$";
-					}
-					else {
-						double jum = Mat[i][kolom-1];
-						for (int j=idx+1; j<kolom-1; j++) {
-							if (sol[j]=="$") {
-								jum =  jum - (Mat[i][j]*x[j]);
-							}
-						}
-						sol[idx]=String.valueOf(jum);
-						int kolel = kolom-1;
-						for (int j=kolom-2; j>idx;j--) {
-							if (j == sblVarTakNol_(Mat, sol, i, kolel)) {
-								sol[idx] = sol[idx]+"+("+String.valueOf(-1*Mat[i][j])+")"+String.valueOf((char)kodeParam);
-								sol[j] = String.valueOf((char)kodeParam);
-								kodeParam=kodeParam-1;
-								kolel=j;
-							}
-							if (Mat[i][j]==0 && sol[j]=="_") {
-								sol[j] = String.valueOf((char)kodeParam);
-								kodeParam=kodeParam-1;
-							}
-						}
-					}
-				}
-			}
-			i=i-1;
+			i=i+1;
 		}
-		if (banyak$SesudahElArr(sol,-1, kolom)==0) {
+		System.out.println(countBrsNol);
+		if(countBrsNol==0 && banyakBukanNolBaris(Mat,(baris-1),kolom)==0) {
 			System.out.println("SPL tidak memiliki solusi");
 		}
-		else {
+		else{
+			double[] x = new double[kolom-1];
+			String[] sol = new String[kolom-1];
+			for (int j=0; j<kolom-1; j++) {
+				sol[j]="_";
+			}
+			int kodeParam = 122;
+			int i=baris-1;
+			while (i>=0) {
+				if (barisNol(Mat,kolom,i)) {
+					i=i-1;
+				}
+				else{
+					int idx = pertamaBrsBukanNol(Mat,i,kolom);
+					if (idx==kolom-1) {
+						i=-1;
+					}
+					else if (banyakBukanNolBaris(Mat,i,kolom)==1){
+						x[idx]=Mat[i][kolom-1];
+						sol[idx] ="$";
+					}
+					else {
+						if (banyakBukanNolBaris(Mat,i,kolom)==banyak$SesudahElArr(sol,idx,kolom)+1) {
+							double jum = Mat[i][kolom-1];
+							for (int j=idx+1; j<kolom-1; j++) {
+								jum =  jum - (Mat[i][j]*x[j]);
+							}
+							x[idx]=jum;
+							sol[idx]="$";
+						}
+						else {
+							double jum = Mat[i][kolom-1];
+							for (int j=idx+1; j<kolom-1; j++) {
+								if (sol[j]=="$") {
+									jum =  jum - (Mat[i][j]*x[j]);
+								}
+							}
+							sol[idx]=String.valueOf(jum);
+							int kolel = kolom-1;
+							for (int j=kolom-2; j>idx;j--) {
+								if (j == sblVarTakNol_(Mat, sol, i, kolel)) {
+									sol[idx] = sol[idx]+"+("+String.valueOf(-1*Mat[i][j])+")"+String.valueOf((char)kodeParam);
+									sol[j] = String.valueOf((char)kodeParam);
+									kodeParam=kodeParam-1;
+									kolel=j;
+								}
+								if (Mat[i][j]==0 && sol[j]=="_") {
+									sol[j] = String.valueOf((char)kodeParam);
+									kodeParam=kodeParam-1;
+								}
+							}
+						}
+					}
+				}
+				i=i-1;
+			}
 			System.out.println("Solusi SPL: ");
 			for (i=0; i<kolom-1; i++) {
 				if (sol[i]=="$") {
@@ -285,4 +301,210 @@ public class MatSPL {
 		return i;
 	}
 	
+	void matriksEselonReduksi(double[][] Mat, int baris, int kolom) {
+		matriksEselonBaris(Mat, baris, kolom);
+		int countBrsNol = 0;
+		int i = 0;
+		while (i<baris-countBrsNol) {
+			if (barisNol(Mat, kolom, i)) {
+				countBrsNol +=1;
+			}
+			else {
+				i=i+1;
+			}
+		}
+		for (i=1; i<baris-countBrsNol; i++) {
+			for (int j=0; j<i; j++) {
+				double x = Mat[j][pertamaBrsBukanNol(Mat, i, kolom)];
+				for (int k=0; k<kolom; k++) {
+					Mat[j][k]=Mat[j][k]-(x*Mat[i][k]);
+				}
+			}
+		}
+	}
+	
+	double kofaktor(double[][] MatriksInput) {
+        if (MatriksInput[0].length != MatriksInput.length){
+            return -999 ;//error karena bukan matriks persegi
+        } else if(MatriksInput.length == 1){
+            return MatriksInput[0][0];//Basis dari rekursi
+        } else{//menghitung matriks [baris][kolom]
+            double det = 0;
+            double[][]  minor = new double[MatriksInput.length-1][MatriksInput.length-1];
+            //k adalah kolom dari MatriksInput, selalu ambil baris 0
+            //i adalah  baris MatriksInput
+            //j adalah kolom MatriksInput
+            //a adalah baris minor
+            //b adalah kolom minor
+            int k;
+            for (k = 0;k < MatriksInput.length;k++){
+                int i = 1;
+                int a = 0;
+                while(i < MatriksInput.length){
+                    int j = 0;
+                    int b = 0;
+                    while(j < MatriksInput.length){
+                        if (k != j){
+                            minor[a][b] = MatriksInput[i][j];
+                            b++;
+                        }
+                        j++;
+                    }
+                    a++;
+                    i++;
+                }
+                if(k%2 == 1){
+                    det -= MatriksInput[0][k]*this.kofaktor(minor);
+                }else {
+                    det += MatriksInput[0][k]*this.kofaktor(minor);
+                }
+            }
+            return det;
+        }
+	}
+	
+	void solusiSPLCramer(double[][] Mat, int baris, int kolom) {
+		//buat matriks pembagi
+		double[][] MatX = new double [baris][baris]; // pasti baris = kolom-1
+		for (int i=0; i<baris; i++) {
+			for (int j=0; j<baris; j++) {
+				MatX[i][j] = Mat[i][j];
+			}
+		}
+		double denum = kofaktor(MatX);
+		if (denum != 0) {
+			double[] arrHasil = new double[baris];
+			for (int k=0; k<baris; k++) {
+				double[][] MatNum = new double[baris][baris];
+				for (int i=0; i<baris; i++) {
+					for (int j=0; j<baris; j++) {
+						MatNum[i][j] = MatX[i][j];
+					}
+				}
+				//tukar elemen matriks untuk determinan pembilang
+				for (int j=0; j<baris; j++) {
+					MatNum[j][k] = Mat[j][kolom-1];
+				}
+				double num = kofaktor(MatNum);
+				arrHasil[k]=num/denum;
+			}
+			System.out.println("Solusi SPL:");
+			for (int a=0; a<baris; a++) {
+				System.out.println(String.format("x%d = %.2f", a+1, arrHasil[a]));
+			}
+		}
+		else {
+			System.out.println("SPL tidak memiliki solusi");
+		}
+	}
+	
+	void solusiSPLGaussJordan(double[][] Mat, int baris, int kolom) {
+		matriksEselonReduksi(Mat, baris, kolom);
+		int countBrsNol = 0;
+		int i = 0;
+		while (i<baris-countBrsNol) {
+			if (barisNol(Mat, kolom, i)) {
+				countBrsNol +=1;
+			}
+			else {
+				i=i+1;
+			}
+		}
+		if(countBrsNol==0 && banyakBukanNolBaris(Mat,(baris-countBrsNol-1),kolom)==0) {
+			System.out.println("SPL tidak memiliki solusi");
+		}
+		else if (countBrsNol==0) {
+			System.out.println("Solusi SPL: ");
+			for (i=0; i<baris; i++) {
+				System.out.println(String.format("x%d = %.2f", i+1, Mat[i][kolom-1]));
+			}
+		}
+		else {
+			int kodeParam = 97;
+			String[] solusi = new String[kolom-1];
+			for (i=0; i<kolom-1; i++) {
+				solusi[i]="KOSONG";
+			}
+			int banyakvar=0;
+			i=0;
+			while (i<baris-countBrsNol) {
+				if (Mat[i][i+banyakvar]!=1) {
+					solusi[i+banyakvar]=String.valueOf((char)(kodeParam+banyakvar));
+					banyakvar=banyakvar+1;
+				}
+				else {
+					i=i+1;
+				}
+			}
+			if (i+banyakvar<kolom-2) {
+				int j=i+banyakvar;
+				while (j<kolom-1) {
+					solusi[j]=String.valueOf((char)(kodeParam+banyakvar));
+					banyakvar=banyakvar+1;
+					j+=1;
+				}
+			}
+			for (i=baris-countBrsNol-1; i>=0; i--) {
+				int x = pertamaBrsBukanNol(Mat,i,kolom);
+				if (solusi[x]=="KOSONG") {
+					if (banyakTidakNolSesudahElmt(Mat,x,i,kolom)==0) {
+						solusi[x]=String.valueOf(Mat[i][kolom-1]);
+					}
+					else {
+						if (Mat[i][kolom-1]!=0) {
+							solusi[x]=String.valueOf(Mat[i][kolom-1]);
+						}
+						else {
+							solusi[x]= "";
+						}
+						for (int j=x+1; j<kolom-1; j++) {
+							if (Mat[i][j]>0) {
+								if (Mat[i][j]!=1) {
+									solusi[x]=solusi[x]+"-"+String.valueOf(Mat[i][j])+solusi[j];
+								}
+								else {
+									solusi[x]=solusi[x]+"-"+solusi[j];
+								}
+							}
+							else if(Mat[i][j]<0) {
+								if (solusi[x]!="") {
+									if (Mat[i][j]!=-1) {
+										solusi[x]=solusi[x]+"+"+String.valueOf((-1)*Mat[i][j])+solusi[j];
+									}
+									else {
+										solusi[x]=solusi[x]+"+"+solusi[j];
+									}
+								}
+								else {
+									if (Mat[i][j]!=-1) {
+										solusi[x]=String.valueOf((-1)*Mat[i][j])+solusi[j];
+									}
+									else {
+										solusi[x]=solusi[j];
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			System.out.println("Solusi SPL");
+			for (i=0; i<kolom-1; i++) {
+				System.out.print(String.format("x%d = ", i+1));
+				System.out.println(solusi[i]);
+			}
+		}
+		
+	}
+	
+	int banyakTidakNolSesudahElmt(double[][] Mat, int kolapa, int bar, int kolom) {
+		/* mengembalikan banyaknya elemen tidak nol di Mat[bar][kolapa] sampai Mat[bar][kolom-2] */
+		int count=0;
+		for (int i=kolapa+1; i<kolom-1; i++) {
+			if (Mat[bar][i]!=0) {
+				count=count+1;
+			}
+		}
+		return count;
+	}
 }
