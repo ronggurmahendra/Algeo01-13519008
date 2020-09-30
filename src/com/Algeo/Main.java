@@ -108,11 +108,11 @@ public class Main {
                 hasil = regresiLinear.regresiLinear(matriksRegresi);
                 System.out.print("y = ");
                 for(int i = 0;i < hasil.length;i++){
-                    System.out.print(hasil[i]);
-                    System.out.print("X");
-                    System.out.print(i);
+                    System.out.printf("%.2f ", hasil[i]);
+                    System.out.print(" X");
+                    System.out.print(i+1);
                     if(i != hasil.length-1){
-                        System.out.print(" +");
+                        System.out.print(" + ");
                     }
 
                 }
