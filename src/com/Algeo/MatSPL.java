@@ -1,4 +1,3 @@
-//package tubes1algeo;
 package com.Algeo;
 import java.util.Scanner;
 
@@ -113,7 +112,67 @@ public class MatSPL {
 			Mat[brs2][i]=arrtemp[i];
 		}
 	}
-	
+    
+    double[] SPLGauss (double[][] Mat, int baris, int kolom) {
+        matriksEselonBaris(Mat, baris, kolom);
+        double[] x = new double[kolom-1];
+        String[] sol = new String[kolom-1];
+        for (int j=0; j<kolom-1; j++) {
+            sol[j]="_";
+        }
+        int kodeParam = 122;
+        int i=baris-1;
+        while (i>=0) {
+            if (barisNol(Mat,kolom,i)) {
+                i=i-1;
+            }
+            else{
+                int idx = pertamaBrsBukanNol(Mat,i,kolom);
+                if (idx==kolom-1) {
+                    i=-1;
+                }
+                else if (banyakBukanNolBaris(Mat,i,kolom)==1){
+                    x[idx]=Mat[i][kolom-1];
+                    sol[idx] ="$";
+                }
+                else {
+                    if (banyakBukanNolBaris(Mat,i,kolom)==banyak$SesudahElArr(sol,idx,kolom)+1) {
+                        double jum = Mat[i][kolom-1];
+                        for (int j=idx+1; j<kolom-1; j++) {
+                            jum =  jum - (Mat[i][j]*x[j]);
+                        }
+                        x[idx]=jum;
+                        sol[idx]="$";
+                    }
+                    else {
+                        double jum = Mat[i][kolom-1];
+                        for (int j=idx+1; j<kolom-1; j++) {
+                            if (sol[j]=="$") {
+                                jum =  jum - (Mat[i][j]*x[j]);
+                            }
+                        }
+                        sol[idx]=String.valueOf(jum);
+                        int kolel = kolom-1;
+                        for (int j=kolom-2; j>idx;j--) {
+                            if (j == sblVarTakNol_(Mat, sol, i, kolel)) {
+                                sol[idx] = sol[idx]+"+("+String.valueOf(-1*Mat[i][j])+")"+String.valueOf((char)kodeParam);
+                                sol[j] = String.valueOf((char)kodeParam);
+                                kodeParam=kodeParam-1;
+                                kolel=j;
+                            }
+                            if (Mat[i][j]==0 && sol[j]=="_") {
+                                sol[j] = String.valueOf((char)kodeParam);
+                                kodeParam=kodeParam-1;
+                            }
+                        }
+                    }
+                }
+            }
+            i=i-1;
+        }
+        return x;
+    }
+
 	void solusiSPLGauss(double[][] Mat, int baris, int kolom) {
 		matriksEselonBaris(Mat, baris, kolom);
 		double[] x = new double[kolom-1];
@@ -227,6 +286,3 @@ public class MatSPL {
 	}
 	
 }
-
-	
-	
