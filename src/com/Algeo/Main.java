@@ -17,6 +17,7 @@ public class Main {
 
         Scanner menu = new Scanner(System.in);
         Scanner sc = new Scanner(System.in);
+        System.out.print("Pilih menu : ");
         int input = menu.nextInt();
         switch (input){
             case 1:
@@ -25,6 +26,7 @@ public class Main {
                 System.out.println("2. Metode eliminasi Gauss-Jordan");
                 System.out.println("3. Metode matriks balikan");
                 System.out.println("4. Kaidah Cramer");
+                System.out.print("Pilih metode : ");
                 int inputSPL = menu.nextInt();
                 switch (inputSPL){
                     case 1:
@@ -49,7 +51,7 @@ public class Main {
 							M.isiMatriks(Mat, baris, kolom);
 							/* menampilkan solusi SPL */
 							M.solusiSPLGauss(Mat, baris, kolom);
-						}
+						} 
 						// else {} -- belum :)
 
                         break;
@@ -59,6 +61,8 @@ public class Main {
                         break;
                     case 3:
                         //masukin program SPL Metode matriks balikan
+                        SPLMatrixBalikan SPLInverse = new SPLMatrixBalikan();
+                        SPLInverse.SPLinverse();
 
                         break;
                     case 4:
@@ -89,10 +93,14 @@ public class Main {
                 break;
             case 3:
                 //program Matriks Balikan
+                MatrixBalikan Inverse = new MatrixBalikan();
+                Inverse.MainInverse();
 
                 break;
             case 4:
                 //program Interpolasi Polinom
+                interpolasi interpolasi = new interpolasi();
+                interpolasi.inter();
 
                 break;
             case 5:
@@ -125,6 +133,8 @@ public class Main {
                 break;
 
         }
+        menu.close();
+        sc.close();
     }
 }
 

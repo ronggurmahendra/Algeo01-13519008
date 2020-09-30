@@ -97,7 +97,7 @@ public class SPLMatrixBalikan {
             if (det == 0){
                 outfile.println("SPL tidak memiliki solusi tunggal (unik)");
             } else {
-                System.out.println("Hasil penyelesaian SPL dengan matriks balikan : ");
+                outfile.println("Hasil penyelesaian SPL dengan matriks balikan : ");
                 for(i=0; i<n; i++){
                     for(j=0; j<1; j++){
                     outfile.printf("X%d = %f\n", i+1, X[i][j]);
