@@ -1,6 +1,7 @@
 package com.Algeo;
 import java.util.Scanner;
-
+import java.io.File;
+//import java.io.File;
 public class Main {
 
     public static void main(String[] args) {
@@ -67,7 +68,7 @@ public class Main {
 									i++;
 								}
 								inFile.close();
-							} catch (FileNotFoundException e) {
+							} catch (Exception e) {
 								System.out.println("File tidak ditemukan");
 							}
 							/* menampilkan solusi SPL */
@@ -112,7 +113,7 @@ public class Main {
 									i++;
 								}
 								inFile.close();
-							} catch (FileNotFoundException e) {
+							} catch (Exception e) {
 								System.out.println("File tidak ditemukan");
 							}
 							/* menampilkan solusi SPL */
@@ -162,7 +163,7 @@ public class Main {
 									i++;
 								}
 								inFile.close();
-							} catch (FileNotFoundException e) {
+							} catch (Exception e) {
 								System.out.println("File tidak ditemukan");
 							}
 							/* menampilkan solusi SPL */
@@ -215,15 +216,15 @@ public class Main {
             case 5:
                 //program Regresi linier berganda
                 RegresiLinear regresiLinear = new RegresiLinear();
-                Scanner scannerDeterminan = new Scanner(System.in);
+                Scanner scannerRegresi = new Scanner(System.in);
                 //Determinan wkwk = new Determinan();
                 double[][] matriksRegresi;
                 System.out.println("Pilih jenis input : ");
                 System.out.println("1. Input Keyboard ");
                 System.out.println("2. Input File ");
                 System.out.print("Jenis input : ");
-                this.input = in.nextInt();
-                if (input == 1){
+                int inputregresiLinear = scannerRegresi.nextInt();
+                if (inputregresiLinear == 1){
                     matriksRegresi = regresiLinear.bacaSPL();
                 }else {
                     matriksRegresi = regresiLinear.bacaFile();
