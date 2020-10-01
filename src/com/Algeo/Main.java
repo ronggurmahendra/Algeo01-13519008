@@ -138,7 +138,7 @@ public class Main {
 						/* masukan jumlah baris dan kolom */
 						System.out.print("Masukkan banyak persamaan dan variabel: ");
 						int baris3 = sc.nextInt();
-						int kolom3 = baris+1;
+						int kolom3 = baris3+1;
 						/* membuat matriks */
 						MatSPL M3 = new MatSPL();
 						double[][] Mat3 = new double [baris3][kolom3];		
