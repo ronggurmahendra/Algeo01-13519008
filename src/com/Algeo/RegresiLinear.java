@@ -14,13 +14,17 @@ public class RegresiLinear {
             for(int j = 0;j<k;j++){
                 ///persBeta[i][j] = i+j;
                 double temp = 0;
-                for(int a = 1;a<matriksInput.length;a++) {
-                    temp += matriksInput[a][j] * matriksInput[a][i];
+                for(int a = 0;a<matriksInput.length;a++) {
+                    if(a == 0){
+                        //temp = ;
+                    }else{
+                        temp += matriksInput[a][j] * matriksInput[a][i];
+                    }
                 }
                 persBeta[i][j] = temp;
             }
         }
-        //tulisMatriks(persBeta);
+        tulisMatriks(persBeta);
         double[] hasil = new double[matriksInput.length];
         //tulisMatriks(persBeta);
         MatSPL Gauss = new MatSPL();
@@ -70,9 +74,9 @@ public class RegresiLinear {
         for(int i = 1; i< n+1;i++){
             for(int j = 1; j < k+2 ;j++){
                 if (j == k+1){
-                    System.out.print(String.format("Masukan Y%d : ", i));
+                    //System.out.print(String.format("Masukan Y%d : ", i));
                 }else{
-                    System.out.print(String.format("Masukan X%d%d : ", i, j));
+                    //System.out.print(String.format("Masukan X%d%d : ", i, j));
                 }
 
                 matriks[i][j] = myObj.nextDouble();
@@ -89,9 +93,10 @@ public class RegresiLinear {
     }
 
     public static void tulisMatriks(double[][] matriks) {
+        System.out.println();
         for (int i = 0; i < matriks.length; i++) {
             for (int j = 0; j < matriks[i].length; j++) {
-                System.out.printf("%.2f ", matriks[i][j]);
+                System.out.printf("Matriks[%d][%d] = %.2f ",i,j, matriks[i][j]);
             }
             System.out.println();
         }
