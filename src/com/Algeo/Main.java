@@ -1,5 +1,6 @@
 package com.Algeo;
 import java.util.Scanner;
+import java.io.*;
 
 public class Main {
 
@@ -222,7 +223,7 @@ public class Main {
                 System.out.println("1. Input Keyboard ");
                 System.out.println("2. Input File ");
                 System.out.print("Jenis input : ");
-                this.input = in.nextInt();
+                input = in.nextInt();
                 if (input == 1){
                     matriksRegresi = regresiLinear.bacaSPL();
                 }else {
