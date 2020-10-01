@@ -1,5 +1,7 @@
 package com.Algeo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class RegresiLinear {
@@ -30,7 +32,34 @@ public class RegresiLinear {
 
     }
 
+    public  static  double[][]bacaFile(){
 
+        System.out.print("Masukkan nama file : ");
+        String alamat;
+        private Scanner in = new Scanner (System. in);
+        alamat = in.next();
+        Scanner inFile = null;
+
+        try {
+            inFile = new Scanner(new File(alamat));
+            int i = 0;
+            int baris = inFile.nextInt();
+            int kolom = inFile.nextInt();
+            double [][] matrix = new double[baris][kolom];
+            while (inFile.hasNext() && i< baris) {
+                for (int j = 0; j < kolom; j++) {
+                    matrix[i][j] = inFile.nextDouble();
+                }
+                //matrixB[i][0] = inFile.nextDouble();
+                i++;
+            }
+            inFile.close();
+            return matrix;
+        } catch (FileNotFoundException e) {
+            System.out.println("File not Found");
+        }
+
+    }
 
     public static double[][] bacaSPL() {
         Scanner myObj = new Scanner(System.in);

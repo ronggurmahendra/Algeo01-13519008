@@ -125,7 +125,18 @@ public class Main {
                 int inputDeterminan = scannerDeterminan.nextInt();
                 Determinan determinan = new Determinan();
                 double[][] matriks;
-                matriks = determinan.bacaMatriks();
+                private Scanner in = new Scanner (System. in);
+                System.out.println("Pilih jenis input : ");
+                System.out.println("1. Input Keyboard ");
+                System.out.println("2. Input File ");
+                System.out.print("Jenis input : ");
+                input = in.nextInt();
+                if (input == 1){
+                    matriks = determinan.bacaMatriks();
+                }else {
+                    matriks= determinan.bacaFile();
+                }
+
                 //determinan.tulisMatriks(matriks);
                 if (inputDeterminan == 1){
                     System.out.print("Determinan Matriks dengan kofaktor = ");
@@ -150,11 +161,21 @@ public class Main {
             case 5:
                 //program Regresi linier berganda
                 RegresiLinear regresiLinear = new RegresiLinear();
+                Scanner scannerDeterminan = new Scanner(System.in);
                 //Determinan wkwk = new Determinan();
                 double[][] matriksRegresi;
-
+                System.out.println("Pilih jenis input : ");
+                System.out.println("1. Input Keyboard ");
+                System.out.println("2. Input File ");
+                System.out.print("Jenis input : ");
+                this.input = in.nextInt();
+                if (input == 1){
+                    matriksRegresi = regresiLinear.bacaSPL();
+                }else {
+                    matriksRegresi = regresiLinear.bacaFile();
+                }
                 //matriksRegresi = {[1,1,1,1],[1,1,10,12],[1,2,1,18],[1,3,2,24],[1,4,3,30]};
-                matriksRegresi = regresiLinear.bacaSPL();
+                //matriksRegresi = regresiLinear.bacaSPL();
                 //wkwk.tulisMatriks(matriksRegresi);
                 double[] hasil;
                 hasil = regresiLinear.regresiLinear(matriksRegresi);

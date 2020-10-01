@@ -1,5 +1,7 @@
 package com.Algeo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Determinan {
@@ -43,46 +45,46 @@ public class Determinan {
         }
 
     }
-    public double OBE(double[][] MatriksInput){
-        if (MatriksInput[0].length != MatriksInput.length){
-            return -999 ;//error karena bukan matriks persegi
+    public double OBE(double[][] MatriksInput) {
+        if (MatriksInput[0].length != MatriksInput.length) {
+            return -999;//error karena bukan matriks persegi
         } else {
-            int i,j,k;
-            double[][] a = new double[MatriksInput.length+1][MatriksInput.length+1];
+            int i, j, k;
+            double[][] a = new double[MatriksInput.length + 1][MatriksInput.length + 1];
             int cntswap;
             double tmp;
             float ret;
             boolean found;
             //salin Matriks
-            for (i = 0;i<MatriksInput.length;i++){
-                for(j = 0;j<MatriksInput.length;j++){
+            for (i = 0; i < MatriksInput.length; i++) {
+                for (j = 0; j < MatriksInput.length; j++) {
                     a[i][j] = MatriksInput[i][j];
                 }
             }
             //buat matriks segitiga atas
             cntswap = 0;
-            for (i = 0;i<MatriksInput.length;i++){
-                if(Math.abs(a[i][i])>1e-14){
+            for (i = 0; i < MatriksInput.length; i++) {
+                if (Math.abs(a[i][i]) > 1e-14) {
                     found = false;
-                    j = i+1;
-                    while(j<= MatriksInput.length && !found){
-                        if(Math.abs(a[j][i])>1e-14){
+                    j = i + 1;
+                    while (j <= MatriksInput.length && !found) {
+                        if (Math.abs(a[j][i]) > 1e-14) {
                             found = true;
                             cntswap++;
-                            for(k=i;k<MatriksInput.length;k++){
-                                tmp=a[i][k];
-                                a[i][k]=a[j][k];
-                                a[j][k]=tmp;
+                            for (k = i; k < MatriksInput.length; k++) {
+                                tmp = a[i][k];
+                                a[i][k] = a[j][k];
+                                a[j][k] = tmp;
                             }
                         }
                         j++;
                     }
                 }
-                if(Math.abs(a[i][i])>1e-7){
-                    for(j=i+1;j<MatriksInput.length;j++){
-                        tmp = a[j][i]/a[i][i];
-                        for(k=i;k<MatriksInput.length;k++){
-                            a[j][k]-=a[i][k]*tmp;
+                if (Math.abs(a[i][i]) > 1e-7) {
+                    for (j = i + 1; j < MatriksInput.length; j++) {
+                        tmp = a[j][i] / a[i][i];
+                        for (k = i; k < MatriksInput.length; k++) {
+                            a[j][k] -= a[i][k] * tmp;
                         }
                     }
                 }
@@ -90,16 +92,46 @@ public class Determinan {
             }
             //kalikan diagonal
             ret = 1;
-            for(i = 0;i<MatriksInput.length;i++){
-                if(Math.abs(a[i][i])>1e-14) ret *= a[i][i];
+            for (i = 0; i < MatriksInput.length; i++) {
+                if (Math.abs(a[i][i]) > 1e-14) ret *= a[i][i];
                 else return 0;
             }
-            if (cntswap%2 == 1) ret*= -1;
+            if (cntswap % 2 == 1) ret *= -1;
             return ret;
         }
 
         //return this.kofaktor(MatriksInput);
     }
+    public  static  double[][] bacaFile(){
+
+        System.out.print("Masukkan nama file : ");
+        String alamat;
+        private Scanner in = new Scanner (System. in);
+        alamat = in.next();
+        Scanner inFile = null;
+
+        try {
+            inFile = new Scanner(new File(alamat));
+            int i = 0;
+            int baris = inFile.nextInt();
+            int kolom = inFile.nextInt();
+            double [][] matrix = new double[baris][kolom];
+            while (inFile.hasNext() && i< baris) {
+                for (int j = 0; j < kolom; j++) {
+                    matrix[i][j] = inFile.nextDouble();
+                }
+                //matrixB[i][0] = inFile.nextDouble();
+                i++;
+            }
+            inFile.close();
+            return matrix;
+        } catch (FileNotFoundException e) {
+            System.out.println("File not Found");
+        }
+
+    }
+
+
     public static double[][] bacaMatriks() {
         Scanner myObj = new Scanner(System.in);
         System.out.print("Masukan Jumlah Kolom : ");
