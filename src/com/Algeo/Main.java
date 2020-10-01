@@ -29,7 +29,7 @@ public class Main {
                 System.out.println("4. Kaidah Cramer");
                 System.out.print("Pilih metode : ");
                 int inputSPL = menu.nextInt();
-                switch (inputSPL){
+                switch (inputSPL) {
                     case 1:
                          /* pilih masukan dari keyboard atau file text */
 						System.out.println("Pilih metode masukan: ");
@@ -40,39 +40,40 @@ public class Main {
 						int opsi = sc.nextInt();
 						/* masukan jumlah baris dan kolom */
 							System.out.print("Masukkan banyak persamaan: ");
-							int baris = sc.nextInt();
+							int baris1 = sc.nextInt();
 							System.out.print("Masukkan banyak variabel: ");
-							int kolom = sc.nextInt()+1;
+							int kolom1 = sc.nextInt()+1;
 							/* membuat matriks */
-							MatSPL M = new MatSPL();
-							double[][] Mat = new double [baris][kolom];
+							MatSPL M1 = new MatSPL();
+							double[][] Mat1;
+							Mat1 = new double [baris1][kolom1];
 						if (opsi == 1) {
 							/* membaca isi matriks */
-							M.isiMatriks(Mat, baris, kolom);
+							M1.isiMatriks(Mat1, baris1, kolom1);
 							/* menampilkan solusi SPL */
-							M.solusiSPLGauss(Mat, baris, kolom);
+							M1.solusiSPLGauss(Mat1, baris1, kolom1);
 						} 
 						else {
 							/*membaca dari file */
 							System.out.print("Masukkan alamat file : ");
-							String alamat;
-							alamat = sc.next();
-							Scanner inFile = null;
+							String alamat1;
+							alamat1 = sc.next();
+							Scanner inFile1 = null;
 							try {
-								inFile = new Scanner(new File(alamat));
+								inFile1 = new Scanner(new File(alamat1));
 								int i = 0;
-								while (inFile.hasNext()) {
-									for (int j=0; j < kolom; j++){
-										Mat[i][j] = inFile.nextDouble();
+								while (inFile1.hasNext()) {
+									for (int j=0; j < kolom1; j++){
+										Mat1[i][j] = inFile1.nextDouble();
 									} 
 									i++;
 								}
-								inFile.close();
+								inFile1.close();
 							} catch (Exception e) {
 								System.out.println("File tidak ditemukan");
 							}
 							/* menampilkan solusi SPL */
-							M.solusiSPLGauss(Mat, baris, kolom);
+							M1.solusiSPLGauss(Mat1, baris1, kolom1);
 						}
 					 break;
                     case 2:
@@ -85,39 +86,39 @@ public class Main {
 						opsi = sc.nextInt();
 						/* masukan jumlah baris dan kolom */
 						System.out.print("Masukkan banyak persamaan: ");
-						int baris = sc.nextInt();
+						int baris2 = sc.nextInt();
 						System.out.print("Masukkan banyak variabel: ");
-						int kolom = sc.nextInt()+1;
+						int kolom2 = sc.nextInt()+1;
 						/* membuat matriks */
-						MatSPL M = new MatSPL();
-						double[][] Mat = new double [baris][kolom];
+						MatSPL M2 = new MatSPL();
+						double[][] Mat2 = new double [baris2][kolom2];
 						if (opsi == 1) {
 							/* membaca isi matriks */
-							M.isiMatriks(Mat, baris, kolom);
+							M2.isiMatriks(Mat2, baris2, kolom2);
 							/* menampilkan solusi SPL */
-							M.solusiSPLGaussJordan(Mat, baris, kolom);
+							M2.solusiSPLGaussJordan(Mat2, baris2, kolom2);
 						} 
 						else {
 							/* membaca dari file */
 							System.out.print("Masukkan alamat file : ");
-							String alamat;
-							alamat = sc.next();
-							Scanner inFile = null;
+							String alamat2;
+							alamat2 = sc.next();
+							Scanner inFile2 = null;
 							try {
-								inFile = new Scanner(new File(alamat));
+								inFile2 = new Scanner(new File(alamat2));
 								int i = 0;
-								while (inFile.hasNext()) {
-									for (int j=0; j < kolom; j++){
-										Mat[i][j] = inFile.nextDouble();
+								while (inFile2.hasNext()) {
+									for (int j=0; j < kolom2; j++){
+										Mat2[i][j] = inFile2.nextDouble();
 									} 
 									i++;
 								}
-								inFile.close();
+								inFile2.close();
 							} catch (Exception e) {
 								System.out.println("File tidak ditemukan");
 							}
 							/* menampilkan solusi SPL */
-							M.solusiSPLGaussJordan(Mat, baris, kolom);
+							M2.solusiSPLGaussJordan(Mat2, baris2, kolom2);
 						}
 					 break;
                     case 3:
@@ -136,38 +137,38 @@ public class Main {
 						opsi = sc.nextInt();
 						/* masukan jumlah baris dan kolom */
 						System.out.print("Masukkan banyak persamaan dan variabel: ");
-						int baris = sc.nextInt();
-						int kolom = baris+1;
+						int baris3 = sc.nextInt();
+						int kolom3 = baris+1;
 						/* membuat matriks */
-						MatSPL M = new MatSPL();
-						double[][] Mat = new double [baris][kolom];		
+						MatSPL M3 = new MatSPL();
+						double[][] Mat3 = new double [baris3][kolom3];		
 						if (opsi == 1) {
 							/* membaca isi matriks */
-							M.isiMatriks(Mat, baris, kolom);
+							M3.isiMatriks(Mat3, baris3, kolom3);
 							/* menampilkan solusi SPL */
-							M.solusiSPLCramer(Mat, baris, kolom);
+							M3.solusiSPLCramer(Mat3, baris3, kolom3);
 						} 
 						else {
 							/* membaca dari file */
 							System.out.print("Masukkan alamat file : ");
-							String alamat;
-							alamat = sc.next();
-							Scanner inFile = null;
+							String alamat3;
+							alamat3 = sc.next();
+							Scanner inFile3 = null;
 							try {
-								inFile = new Scanner(new File(alamat));
+								inFile3 = new Scanner(new File(alamat3));
 								int i = 0;
-								while (inFile.hasNext()) {
-									for (int j=0; j < kolom; j++){
-										Mat[i][j] = inFile.nextDouble();
+								while (inFile3.hasNext()) {
+									for (int j=0; j < kolom3; j++){
+										Mat3[i][j] = inFile3.nextDouble();
 									} 
 									i++;
 								}
-								inFile.close();
+								inFile3.close();
 							} catch (Exception e) {
 								System.out.println("File tidak ditemukan");
 							}
 							/* menampilkan solusi SPL */
-							M.solusiSPLCramer(Mat, baris, kolom);
+							M3.solusiSPLCramer(Mat3, baris3, kolom3);
 						}
 					 break;
                 }
