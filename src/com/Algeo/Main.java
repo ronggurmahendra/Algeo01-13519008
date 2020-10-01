@@ -230,9 +230,6 @@ public class Main {
                 }else {
                     matriksRegresi = regresiLinear.bacaFile();
                 }
-                //matriksRegresi = {[1,1,1,1],[1,1,10,12],[1,2,1,18],[1,3,2,24],[1,4,3,30]};
-                //matriksRegresi = regresiLinear.bacaSPL();
-                //wkwk.tulisMatriks(matriksRegresi);
                 double[] hasil;
                 hasil = regresiLinear.regresiLinear(matriksRegresi);
                 System.out.print("y = ");

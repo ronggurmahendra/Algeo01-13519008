@@ -99,8 +99,6 @@ public class Determinan {
             if (cntswap % 2 == 1) ret *= -1;
             return ret;
         }
-
-        //return this.kofaktor(MatriksInput);
     }
     public  static  double[][] bacaFile(){
 
@@ -143,7 +141,6 @@ public class Determinan {
         double matriks[][] = new double[baris][kolom];
         for(int i = 0; i< baris;i++){
             for(int j = 0;j<kolom;j++){
-                //System.out.print(String.format("Masukan Matriks[%d][%d] = ", i, j));
                 matriks[i][j] = myObj.nextDouble();
             }
         }

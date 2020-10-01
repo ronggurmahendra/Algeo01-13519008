@@ -20,12 +20,9 @@ public class RegresiLinear {
                 persBeta[i][j] = temp;
             }
         }
-
-        //System.out.println("----------persBeta---------------");
         tulisMatriks(persBeta);
         double[] hasil = new double[matriksInput.length];
         //tulisMatriks(persBeta);
-        //System.out.println("----------persBeta---------------");
         MatSPL Gauss = new MatSPL();
         hasil = Gauss.SPLGauss(persBeta, persBeta.length, persBeta[0].length);
         return hasil;
