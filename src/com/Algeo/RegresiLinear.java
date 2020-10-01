@@ -20,7 +20,7 @@ public class RegresiLinear {
                 persBeta[i][j] = temp;
             }
         }
-        tulisMatriks(persBeta);
+        //tulisMatriks(persBeta);
         double[] hasil = new double[matriksInput.length];
         //tulisMatriks(persBeta);
         MatSPL Gauss = new MatSPL();
