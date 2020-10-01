@@ -30,16 +30,14 @@ public class Main {
                 int inputSPL = menu.nextInt();
                 switch (inputSPL){
                     case 1:
-                        /* pilih masukan dari keyboard atau file text */
+                         /* pilih masukan dari keyboard atau file text */
 						System.out.println("Pilih metode masukan: ");
 						System.out.println("1. Masukan dari keyboard");
 						System.out.println("2. Masukan dari file txt");
 						System.out.println("-------------------------");
 						System.out.print("Metode masukan: ");
 						int opsi = sc.nextInt();
-						
-						if (opsi == 1) {
-							/* masukan jumlah baris dan kolom */
+						/* masukan jumlah baris dan kolom */
 							System.out.print("Masukkan banyak persamaan: ");
 							int baris = sc.nextInt();
 							System.out.print("Masukkan banyak variabel: ");
@@ -47,14 +45,35 @@ public class Main {
 							/* membuat matriks */
 							MatSPL M = new MatSPL();
 							double[][] Mat = new double [baris][kolom];
+						if (opsi == 1) {
 							/* membaca isi matriks */
 							M.isiMatriks(Mat, baris, kolom);
 							/* menampilkan solusi SPL */
 							M.solusiSPLGauss(Mat, baris, kolom);
 						} 
-						//else{}
-
-                        break;
+						else {
+							/*membaca dari file */
+							System.out.print("Masukkan alamat file : ");
+							String alamat;
+							alamat = sc.next();
+							Scanner inFile = null;
+							try {
+								inFile = new Scanner(new File(alamat));
+								int i = 0;
+								while (inFile.hasNext()) {
+									for (int j=0; j < kolom; j++){
+										Mat[i][j] = inFile.nextDouble();
+									} 
+									i++;
+								}
+								inFile.close();
+							} catch (FileNotFoundException e) {
+								System.out.println("File tidak ditemukan");
+							}
+							/* menampilkan solusi SPL */
+							M.solusiSPLGauss(Mat, baris, kolom);
+						}
+					 break;
                     case 2:
                         /* pilih masukan dari keyboard atau file text */
 						System.out.println("Pilih metode masukan: ");
@@ -62,25 +81,44 @@ public class Main {
 						System.out.println("2. Masukan dari file txt");
 						System.out.println("-------------------------");
 						System.out.print("Metode masukan: ");
-						int opsi = sc.nextInt();
-						
+						opsi = sc.nextInt();
+						/* masukan jumlah baris dan kolom */
+						System.out.print("Masukkan banyak persamaan: ");
+						int baris = sc.nextInt();
+						System.out.print("Masukkan banyak variabel: ");
+						int kolom = sc.nextInt()+1;
+						/* membuat matriks */
+						MatSPL M = new MatSPL();
+						double[][] Mat = new double [baris][kolom];
 						if (opsi == 1) {
-							/* masukan jumlah baris dan kolom */
-							System.out.print("Masukkan banyak persamaan: ");
-							int baris = sc.nextInt();
-							System.out.print("Masukkan banyak variabel: ");
-							int kolom = sc.nextInt()+1;
-							/* membuat matriks */
-							MatSPL M = new MatSPL();
-							double[][] Mat = new double [baris][kolom];
 							/* membaca isi matriks */
 							M.isiMatriks(Mat, baris, kolom);
 							/* menampilkan solusi SPL */
 							M.solusiSPLGaussJordan(Mat, baris, kolom);
 						} 
-						// else {} -- belum :)
-
-                        break;
+						else {
+							/* membaca dari file */
+							System.out.print("Masukkan alamat file : ");
+							String alamat;
+							alamat = sc.next();
+							Scanner inFile = null;
+							try {
+								inFile = new Scanner(new File(alamat));
+								int i = 0;
+								while (inFile.hasNext()) {
+									for (int j=0; j < kolom; j++){
+										Mat[i][j] = inFile.nextDouble();
+									} 
+									i++;
+								}
+								inFile.close();
+							} catch (FileNotFoundException e) {
+								System.out.println("File tidak ditemukan");
+							}
+							/* menampilkan solusi SPL */
+							M.solusiSPLGaussJordan(Mat, baris, kolom);
+						}
+					 break;
                     case 3:
                         //masukin program SPL Metode matriks balikan
                         SPLMatrixBalikan SPLInverse = new SPLMatrixBalikan();
@@ -88,34 +126,50 @@ public class Main {
 
                         break;
                     case 4:
-                        //masukin program SPL Kaidah Cramer
-						/* pilih masukan dari keyboard atau file text */
+                        /* pilih masukan dari keyboard atau file text */
 						System.out.println("Pilih metode masukan: ");
 						System.out.println("1. Masukan dari keyboard");
 						System.out.println("2. Masukan dari file txt");
 						System.out.println("-------------------------");
 						System.out.print("Metode masukan: ");
-						int opsi = sc.nextInt();
-						
+						opsi = sc.nextInt();
+						/* masukan jumlah baris dan kolom */
+						System.out.print("Masukkan banyak persamaan dan variabel: ");
+						int baris = sc.nextInt();
+						int kolom = baris+1;
+						/* membuat matriks */
+						MatSPL M = new MatSPL();
+						double[][] Mat = new double [baris][kolom];		
 						if (opsi == 1) {
-							/* masukan jumlah baris dan kolom */
-							System.out.print("Masukkan banyak persamaan & variabel: ");
-							int baris = sc.nextInt();
-							int kolom = baris+1;
-							/* membuat matriks */
-							MatSPL M = new MatSPL();
-							double[][] Mat = new double [baris][kolom];
 							/* membaca isi matriks */
 							M.isiMatriks(Mat, baris, kolom);
 							/* menampilkan solusi SPL */
 							M.solusiSPLCramer(Mat, baris, kolom);
 						} 
-						// else {} -- belum :)
-
-                        break;
+						else {
+							/* membaca dari file */
+							System.out.print("Masukkan alamat file : ");
+							String alamat;
+							alamat = sc.next();
+							Scanner inFile = null;
+							try {
+								inFile = new Scanner(new File(alamat));
+								int i = 0;
+								while (inFile.hasNext()) {
+									for (int j=0; j < kolom; j++){
+										Mat[i][j] = inFile.nextDouble();
+									} 
+									i++;
+								}
+								inFile.close();
+							} catch (FileNotFoundException e) {
+								System.out.println("File tidak ditemukan");
+							}
+							/* menampilkan solusi SPL */
+							M.solusiSPLCramer(Mat, baris, kolom);
+						}
+					 break;
                 }
-
-
                 break;
             case 2:
                 //program Determinan
