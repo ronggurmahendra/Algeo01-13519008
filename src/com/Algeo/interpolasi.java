@@ -9,7 +9,7 @@ public class interpolasi {
     Scanner in = new Scanner (System. in);
     private MatSPL SPLGauss = new MatSPL();
     private int input;
-    private int n,X; //input banyak titik dan nilai X yang ingin dicari
+    private int n; //input banyak titik dan nilai X yang ingin dicari
     private int i,j,k;
 
     public void inter(){
@@ -81,7 +81,7 @@ public class interpolasi {
 
         //tentukan nilai x yang ingin dicari
         System.out.print("Nilai X yang ingin di cari : ");
-        this.X = in.nextInt();
+        double X = in.nextDouble();
 
         //cari nilai X dengan rumus yang didapat
         double hasil = 0;
