@@ -127,6 +127,8 @@ public class Determinan {
             return matrix;
         } catch (FileNotFoundException e) {
             System.out.println("File not Found");
+            double [][] pass = new double [0][0];
+            return pass;
         }
 
     }
@@ -148,6 +150,7 @@ public class Determinan {
         myObj.close();
         return matriks;
     }
+
     public static void tulisMatriks(double[][] matriks){
         for (int i = 0; i < matriks.length;i++){
             for (int j = 0; j < matriks[i].length;j++){

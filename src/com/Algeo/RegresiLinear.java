@@ -57,6 +57,8 @@ public class RegresiLinear {
             return matrix;
         } catch (FileNotFoundException e) {
             System.out.println("File not Found");
+            double [][] pass = new double [0][0];
+            return pass;
         }
 
     }
