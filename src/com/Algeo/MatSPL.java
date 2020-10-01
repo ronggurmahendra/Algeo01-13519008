@@ -581,9 +581,7 @@ public class MatSPL {
 		}
 		return count;
 	}
-}package com.Algeo;
-import java.util.Scanner;
-
+}
 //import buram.Matriks;
 
 public class MatSPL {

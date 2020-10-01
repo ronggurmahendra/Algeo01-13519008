@@ -179,7 +179,7 @@ public class Main {
                 int inputDeterminan = scannerDeterminan.nextInt();
                 Determinan determinan = new Determinan();
                 double[][] matriks;
-                private Scanner in = new Scanner (System. in);
+                Scanner in = new Scanner (System. in);
                 System.out.println("Pilih jenis input : ");
                 System.out.println("1. Input Keyboard ");
                 System.out.println("2. Input File ");

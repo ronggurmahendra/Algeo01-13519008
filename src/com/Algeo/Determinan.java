@@ -106,7 +106,7 @@ public class Determinan {
 
         System.out.print("Masukkan nama file : ");
         String alamat;
-        private Scanner in = new Scanner (System. in);
+        Scanner in = new Scanner (System. in);
         alamat = in.next();
         Scanner inFile = null;
 
