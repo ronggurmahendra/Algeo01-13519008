@@ -25,7 +25,7 @@ public class RegresiLinear {
                 persBeta[i][j] = temp;
             }
         }
-        tulisMatriks(persBeta);
+        //tulisMatriks(persBeta);
         double[] hasil = new double[matriksInput.length];
         //tulisMatriks(persBeta);
         MatSPL Gauss = new MatSPL();
@@ -93,20 +93,21 @@ public class RegresiLinear {
         return matriks;
     }
 
-    public static void tulisMatriks(double[][] matriks) {
+    public static void tulisMatriks(double[] matriks) {
         System.out.print("y = ");
-        for(int i = 0;i < matriks.length;i++){
+        for(int i = 0;i < matriks.length;i++) {
             System.out.printf("%.2f ", matriks[i]);
 
             if (i != 0) {
                 System.out.print(" X");
                 System.out.print(i);
             }
-            if(i != matriks.length-1){
+            if (i != matriks.length - 1) {
                 System.out.print(" + ");
             }
+        }
     }
-    public static void tulisFile(double[][] matriks){
+    public static void tulisFile(double[] matriks){
         try {
             PrintStream outfile = new PrintStream(new File ("OutputDeterminan.txt"));
             //tulis persamaan polinomnya
