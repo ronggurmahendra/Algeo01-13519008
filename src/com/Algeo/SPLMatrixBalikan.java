@@ -90,7 +90,7 @@ public class SPLMatrixBalikan {
                 }
             }
         }
-
+        System.out.println(" ");
         //salin hasil ke file
         try {
             String alamat2;
