@@ -149,6 +149,7 @@ public class MatrixBalikan {
         if (det == 0){
             System.out.println("Matriks Balikan Tidak Ada");
         } else {
+            System.out.println("Matriks Balikan : ");
             MInv = inverse(matriks);
             //tulis matriks ke layar
             for(i=0; i<n; i++){
