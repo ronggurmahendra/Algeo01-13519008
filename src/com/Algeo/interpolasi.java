@@ -86,7 +86,7 @@ public class interpolasi {
             if (i == 0){
                 System.out.printf("%f ", SPL[i]);
             } else {
-                System.out.printf("+ %f * x^%d ", SPL[i], i);
+                System.out.printf("+ (%f) * x^%d ", SPL[i], i);
             }
         }
         System.out.println("\n");
@@ -111,6 +111,16 @@ public class interpolasi {
         //salin hasil pada file
         try {
             PrintStream outfile = new PrintStream(new File ("output.txt"));
+            //tulis persamaan polinomnya
+            outfile.println("Persamaan interpolasi polinomnya : ");
+            outfile.print("p(x) = ");
+            for (i = 0; i < n; i++){
+                if (i == 0){
+                    outfile.printf("%f ", SPL[i]);
+                } else {
+                    outfile.printf("+ (%f) * x^%d ", SPL[i], i);
+                }
+            }
             outfile.printf("Solusi atau nilai Y yang dihasilkan adalah %f\n", hasil);
             outfile.close();
         } catch (FileNotFoundException e) {
