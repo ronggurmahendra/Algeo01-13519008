@@ -1,0 +1,5 @@
+Hasil penyelesaian SPL dengan matriks balikan : 
+X1 = -0.228473
+X2 = 0.213548
+X3 = 0.684271
+X4 = -0.219288
