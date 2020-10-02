@@ -1,0 +1,6 @@
+Hasil perhitungan SPL dengan menggunakan metode Gauss-Jordan: 
+Solusi SPL:
+x1 = -1.0
+x2 = 2.0a
+x3 = a
+x4 = b

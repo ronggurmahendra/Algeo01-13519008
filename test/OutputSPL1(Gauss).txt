@@ -1,0 +1,2 @@
+Hasil perhitungan SPL dengan menggunakan metode Gauss: 
+SPL tidak memiliki solusi

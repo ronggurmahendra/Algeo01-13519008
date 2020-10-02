@@ -594,6 +594,134 @@ public class MatSPL {
 		
 	}
 	
+	void solusiSPLGaussJordan1(double[][] Mat, int baris, int kolom) {
+		matriksEselonReduksi(Mat, baris, kolom);
+		int countBrsNol = 0;
+		int i = 0;
+		while (i<baris-countBrsNol) {
+			if (barisNol(Mat, kolom, i)) {
+				countBrsNol +=1;
+			}
+			i=i+1;
+		}
+		System.out.println("isi nama file: ");
+		Scanner sc = new Scanner(System.in);
+		String alamat = sc.next();
+		try {
+			PrintStream outfile = new PrintStream(new File (alamat));
+			System.out.println("Hasil perhitungan SPL dengan menggunakan metode Gauss-Jordan: ");
+			outfile.println("Hasil perhitungan SPL dengan menggunakan metode Gauss-Jordan: ");
+			double[][] untukParam = new double[baris][kolom];
+			String[] sol = new String[kolom-1];
+			if(countBrsNol==0 && banyakBukanNolBaris(Mat,(baris-1),kolom)==0) {
+				System.out.println("SPL tidak memiliki solusi");
+				outfile.println("SPL tidak memiliki solusi");
+			}
+			else {
+				for (i=0; i<baris; i++) {
+					for (int j=0; j<kolom; j++) {
+						untukParam[i][j]=Mat[i][j];
+					}
+				}
+				for (int j=0; j<kolom-1; j++) {
+					sol[j]="_";
+				}
+				//membuat variabel untuk parameter
+				int banyakvar=0;
+				int kodeParam = 97;
+				i=0;
+				while (i<baris-countBrsNol && (i+banyakvar)<kolom && (i+banyakvar)<kolom-1) {
+					if (Mat[i][i+banyakvar]!=1) {
+						sol[i+banyakvar]=String.valueOf((char)(kodeParam+banyakvar));
+						banyakvar=banyakvar+1;
+					}
+					else {
+						i=i+1;
+					}
+				}
+				if (i+banyakvar<kolom-1) {
+					int j=i+banyakvar;
+					while (j<kolom-1) {
+						sol[j]=String.valueOf((char)(kodeParam+banyakvar));
+						banyakvar=banyakvar+1;
+						j+=1;
+					}
+				}
+				i=baris-countBrsNol-1;
+				while (i>=0) {
+					//mencari yang hasilnya tidak berparameter
+					int idx = pertamaBrsBukanNol(Mat,i,kolom);
+					for (int j=idx+1; j<kolom-1; j++) {
+						if (sol[j]=="_") {
+							int d = barisMana$(Mat, j, baris, kolom);
+							for (int k=j+1; k<kolom; k++) {
+								untukParam[i][k]=untukParam[i][k]-untukParam[i][j]*untukParam[d][k];
+							}
+							untukParam[i][j]=0;
+						}
+					}
+					i=i-1;
+				}
+				String[] hasil = new String[kolom-1];
+				for (int k=0; k<kolom-1; k++ ) {
+					if (sol[k]=="_") {
+						int d = barisMana$(Mat, k, baris, kolom);
+						if (untukParam[d][kolom-1]==0) {
+							hasil[k]="";
+						}
+						else {
+							hasil[k]=String.valueOf(untukParam[d][kolom-1]);
+						}
+						for (int l=k+1; l<kolom-2; l++) {
+							if (untukParam[d][l]!=0) {
+								double sil = untukParam[d][l]*(-1);
+								if (hasil[k]=="") {
+									hasil[k]=String.valueOf(sil)+sol[l];
+								}
+								else {
+									if (sil>0) {
+										if (sil!=1) {
+											hasil[k]=hasil[k]+"+"+String.valueOf(sil)+sol[l];
+										}
+										else {
+											hasil[k]=hasil[k]+"+"+sol[l];
+										}
+									}
+									else {
+										if (sil!=-1) {
+											hasil[k]=hasil[k]+"-"+String.valueOf(-1*sil)+sol[l];
+										}
+										else {
+											hasil[k]=hasil[k]+"-"+sol[l];
+										}
+									}
+								}
+							}
+						}
+						for (i=0; i<kolom-1; i++) {
+							if (hasil[i]=="") {
+								hasil[i]="0";
+							}
+						}
+					}
+					else {
+						hasil[k]=sol[k];
+					}
+				}
+				System.out.println("Solusi SPL:");
+				outfile.println("Solusi SPL:");
+				for (i=0; i<kolom-1; i++) {
+					System.out.println("x"+(i+1)+" = "+hasil[i]);
+					outfile.println("x"+(i+1)+" = "+hasil[i]);
+				}
+			}
+			outfile.close();
+		}
+		catch (FileNotFoundException e) {
+            System.out.println("Tidak dapat membuka file untuk ditulis");
+        }
+	}
+	
 	int banyakTidakNolSesudahElmt(double[][] Mat, int kolapa, int bar, int kolom) {
 		/* mengembalikan banyaknya elemen tidak nol di Mat[bar][kolapa] sampai Mat[bar][kolom-2] */
 		int count=0;

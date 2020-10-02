@@ -1,0 +1,2 @@
+Hasil perhitungan SPL dengan menggunakan metode Crammer: 
+SPL tidak memiliki solusi tunggal (unik)

@@ -97,7 +97,7 @@ public class Main {
 							/* membaca isi matriks */
 							M2.isiMatriks(Mat2, baris2, kolom2);
 							/* menampilkan solusi SPL */
-							M2.solusiSPLGaussJordan(Mat2, baris2, kolom2);
+							M2.solusiSPLGaussJordan1(Mat2, baris2, kolom2);
 						} 
 						else {
 							/* membaca dari file */
@@ -119,7 +119,7 @@ public class Main {
 								System.out.println("File tidak ditemukan");
 							}
 							/* menampilkan solusi SPL */
-							M2.solusiSPLGaussJordan(Mat2, baris2, kolom2);
+							M2.solusiSPLGaussJordan1(Mat2, baris2, kolom2);
 						}
 					 break;
                     case 3:

@@ -1,0 +1,1 @@
+Hasil perhitungan SPL dengan menggunakan metode Gauss: 

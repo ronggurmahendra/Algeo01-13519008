@@ -1,0 +1,2 @@
+Hasil perhitungan SPL dengan menggunakan metode Gauss-Jordan: 
+SPL tidak memiliki solusi

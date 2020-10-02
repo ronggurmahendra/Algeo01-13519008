@@ -1,0 +1,6 @@
+Hasil perhitungan SPL dengan menggunakan metode Gauss: 
+Solusi SPL:
+x1 = -0.2243243243243243
+x2 = 0.18243243243243246
+x3 = 0.7094594594594594
+x4 = -0.25810810810810797

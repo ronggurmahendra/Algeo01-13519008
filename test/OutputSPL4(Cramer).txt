@@ -1,0 +1,8 @@
+Hasil perhitungan SPL dengan menggunakan metode Crammer: 
+Solusi SPL:
+x1 = 2.58
+x2 = -0.81
+x3 = 2.12
+x4 = -13.63
+x5 = -16.70
+x6 = 28.66
