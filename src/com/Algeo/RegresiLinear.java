@@ -72,8 +72,10 @@ public class RegresiLinear {
         System.out.print("Masukan Jumlah x (Kolom+1) : ");
         int k = myObj.nextInt();  // Read user input
         double matriks[][] = new double[n+1][k+2];
+        System.out.println("Format Input : X1 X2 .. Xn Y");
         for(int i = 1; i< n+1;i++){
             for(int j = 1; j < k+2 ;j++){
+
                 if (j == k+1){
                     //System.out.print(String.format("Masukan Y%d : ", i));
                 }else{
