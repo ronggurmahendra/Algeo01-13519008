@@ -1,7 +1,7 @@
 package com.Algeo;
 import java.util.Scanner;
 import java.io.*;
-
+//import MatSPL.* ;
 /**
  * interpolasi
  */
