@@ -237,19 +237,6 @@ public class Main {
                 }
                 double[] hasil;
                 hasil = regresiLinear.regresiLinear(matriksRegresi);
-                /*
-                System.out.print("y = ");
-                for(int i = 0;i < hasil.length;i++){
-                    System.out.printf("%.2f ", hasil[i]);
-
-                    if (i != 0) {
-						System.out.print(" X");
-						System.out.print(i);
-					}
-                    if(i != hasil.length-1){
-                        System.out.print(" + ");
-                    }
-                }*/
 				regresiLinear.tulisMatriks(hasil);
 				Menu();
                 break;
