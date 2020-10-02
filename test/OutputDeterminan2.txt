@@ -1,1 +1,1 @@
-hasil Determinan Matriks tersebut adalah : 17
+hasil Determinan Matriks tersebut adalah : 87
