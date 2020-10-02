@@ -89,7 +89,7 @@ public class interpolasi {
                 System.out.printf("+ (%f) * x^%d ", SPL[i], i);
             }
         }
-        System.out.println("\n");
+        System.out.println(" ");
         //tentukan nilai x yang ingin dicari
         System.out.print("Nilai X yang ingin di cari : ");
         double X = in.nextDouble();
@@ -106,7 +106,7 @@ public class interpolasi {
         }
 
         //tulis hasil
-        System.out.printf("Solusi atau nilai Y yang dihasilkan adalah %f\n", hasil);
+        System.out.printf("Solusi atau nilai Y yang dihasilkan untuk X = %f adalah %f\n", X, hasil);
 
         //salin hasil pada file
         try {
@@ -124,7 +124,8 @@ public class interpolasi {
                     outfile.printf("+ (%f) * x^%d ", SPL[i], i);
                 }
             }
-            outfile.printf("Solusi atau nilai Y yang dihasilkan adalah %f\n", hasil);
+            outfile.println(" ");
+            outfile.printf("Solusi atau nilai Y yang dihasilkan untuk X = %f adalah %f\n", X, hasil);
             outfile.close();
         } catch (FileNotFoundException e) {
             System.out.println("Tidak dapat membuka file untuk ditulis");
