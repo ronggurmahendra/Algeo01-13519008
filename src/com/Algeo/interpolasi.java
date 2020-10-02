@@ -79,6 +79,17 @@ public class interpolasi {
         double[] SPL = new double[n];
         SPL = SPLGauss.SPLGauss(M, n, n+1);
 
+        //tulis persamaan polinomnya
+        System.out.println("Persamaan interpolasi polinomnya : ");
+        System.out.print("p(x) = ");
+        for (i = 0; i < n; i++){
+            if (i == 0){
+                System.out.printf("%f ", SPL[i]);
+            } else {
+                System.out.printf("+ %f * x^%d ", SPL[i], i);
+            }
+        }
+        System.out.println("\n");
         //tentukan nilai x yang ingin dicari
         System.out.print("Nilai X yang ingin di cari : ");
         double X = in.nextDouble();
