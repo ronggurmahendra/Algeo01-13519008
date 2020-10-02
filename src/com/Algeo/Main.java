@@ -8,6 +8,7 @@ public class Main {
         Menu();
     }
     public static void Menu(){
+		System.out.println("\n");
         System.out.println("MENU");
         System.out.println("1. Sistem Persamaan Linier");
         System.out.println("2. Determinan");
@@ -75,7 +76,8 @@ public class Main {
 							/* menampilkan solusi SPL */
 							M1.solusiSPLGauss(Mat1, baris1, kolom1);
 						}
-					 break;
+					Menu();
+					break;
                     case 2:
                         /* pilih masukan dari keyboard atau file text */
 						System.out.println("Pilih metode masukan: ");
@@ -120,12 +122,13 @@ public class Main {
 							/* menampilkan solusi SPL */
 							M2.solusiSPLGaussJordan(Mat2, baris2, kolom2);
 						}
+					Menu();
 					 break;
                     case 3:
                         //masukin program SPL Metode matriks balikan
                         SPLMatrixBalikan SPLInverse = new SPLMatrixBalikan();
                         SPLInverse.SPLinverse();
-
+						Menu();
                         break;
                     case 4:
                         /* pilih masukan dari keyboard atau file text */
@@ -170,7 +173,8 @@ public class Main {
 							/* menampilkan solusi SPL */
 							M3.solusiSPLCramer(Mat3, baris3, kolom3);
 						}
-					 break;
+					Menu();
+					break;
                 }
                 break;
             case 2:
@@ -200,19 +204,20 @@ public class Main {
                 }else if (inputDeterminan == 2){
                     System.out.print("Determinan Matriks dengan OBE = ");
                     System.out.println(determinan.OBE(matriks));
-                }
+				}
+				Menu();
                 break;
             case 3:
                 //program Matriks Balikan
                 MatrixBalikan Inverse = new MatrixBalikan();
                 Inverse.MainInverse();
-
+				Menu();
                 break;
             case 4:
                 //program Interpolasi Polinom
                 interpolasi interpolasi = new interpolasi();
                 interpolasi.inter();
-
+				Menu();
                 break;
             case 5:
                 //program Regresi linier berganda
@@ -246,7 +251,8 @@ public class Main {
 
                 }
 
-                //System.out.print(hasil[hasil.length]);
+				//System.out.print(hasil[hasil.length]);
+				Menu();
                 break;
             case 6:
                 //Keluar
