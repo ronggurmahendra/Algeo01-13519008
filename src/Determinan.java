@@ -127,7 +127,6 @@ public class Determinan {
             double [][] pass = new double [0][0];
             return pass;
         }
-
     }
 
 

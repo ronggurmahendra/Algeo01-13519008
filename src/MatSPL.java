@@ -586,7 +586,7 @@ public class MatSPL {
 					outfile.println(solusi[i]);
 				}
 			}
-			
+			sc.close();
 		}
 		catch (FileNotFoundException e) {
             System.out.println("Tidak dapat membuka file untuk ditulis");

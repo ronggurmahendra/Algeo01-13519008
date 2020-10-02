@@ -76,7 +76,6 @@ public class Main {
 							/* menampilkan solusi SPL */
 							M1.solusiSPLGauss(Mat1, baris1, kolom1);
 						}
-					Menu();
 					break;
                     case 2:
                         /* pilih masukan dari keyboard atau file text */
@@ -122,13 +121,11 @@ public class Main {
 							/* menampilkan solusi SPL */
 							M2.solusiSPLGaussJordan(Mat2, baris2, kolom2);
 						}
-					Menu();
 					 break;
                     case 3:
                         //masukin program SPL Metode matriks balikan
                         SPLMatrixBalikan SPLInverse = new SPLMatrixBalikan();
                         SPLInverse.SPLinverse();
-						Menu();
                         break;
                     case 4:
                         /* pilih masukan dari keyboard atau file text */
@@ -173,7 +170,6 @@ public class Main {
 							/* menampilkan solusi SPL */
 							M3.solusiSPLCramer(Mat3, baris3, kolom3);
 						}
-					Menu();
 					break;
                 }
                 break;
@@ -217,19 +213,19 @@ public class Main {
 
 
 				}
-				Menu();
+				
                 break;
             case 3:
                 //program Matriks Balikan
                 MatrixBalikan Inverse = new MatrixBalikan();
                 Inverse.MainInverse();
-				Menu();
+				
                 break;
             case 4:
                 //program Interpolasi Polinom
                 interpolasi interpolasi = new interpolasi();
                 interpolasi.inter();
-				Menu();
+				
                 break;
             case 5:
                 //program Regresi linier berganda
@@ -256,7 +252,7 @@ public class Main {
 					regresiLinear.tulisFile(hasil,dir);
 				}
 
-				Menu();
+				
                 break;
             case 6:
                 //Keluar
@@ -265,7 +261,7 @@ public class Main {
 
         }
         menu.close();
-        sc.close();
+		sc.close();
     }
 }
 
