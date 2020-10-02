@@ -1,10 +1,9 @@
-package com.Algeo;
+package tubesAlgeo;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
-//import buram.Matriks;
 
 public class MatSPL {
 	void isiMatriks(double[][] Mat, int baris, int kolom) {
@@ -193,8 +192,13 @@ public class MatSPL {
 			}
 			i=i+1;
 		}
+		System.out.println("isi nama file: ");
+		Scanner sc = new Scanner(System.in);
+		String alamat = sc.next();
 		try {
-			PrintStream outfile = new PrintStream(new File ("outputGauss.txt"));
+			PrintStream outfile = new PrintStream(new File (alamat));
+			System.out.println("Hasil perhitungan SPL dengan menggunakan metode Gauss: ");
+			outfile.println("Hasil perhitungan SPL dengan menggunakan metode Gauss: ");
 			double[][] untukParam = new double[baris][kolom];
 			String[] sol = new String[kolom-1];
 			if(countBrsNol==0 && banyakBukanNolBaris(Mat,(baris-1),kolom)==0) {
@@ -214,7 +218,7 @@ public class MatSPL {
 				int banyakvar=0;
 				int kodeParam = 97;
 				i=0;
-				while (i<baris-countBrsNol && (i+banyakvar)<kolom) {
+				while (i<baris-countBrsNol && (i+banyakvar)<kolom && (i+banyakvar)<kolom-1) {
 					if (Mat[i][i+banyakvar]!=1) {
 						sol[i+banyakvar]=String.valueOf((char)(kodeParam+banyakvar));
 						banyakvar=banyakvar+1;
@@ -223,7 +227,7 @@ public class MatSPL {
 						i=i+1;
 					}
 				}
-				if (i+banyakvar<kolom-2) {
+				if (i+banyakvar<kolom-1) {
 					int j=i+banyakvar;
 					while (j<kolom-1) {
 						sol[j]=String.valueOf((char)(kodeParam+banyakvar));
@@ -282,6 +286,11 @@ public class MatSPL {
 								}
 							}
 						}
+						for (i=0; i<kolom-1; i++) {
+							if (hasil[i]=="") {
+								hasil[i]="0";
+							}
+						}
 					}
 					else {
 						hasil[k]=sol[k];
@@ -337,7 +346,7 @@ public class MatSPL {
 	}
 	
 	int banyak$SesudahElArr(String[] arr, int kolel, int kolom) {
-		/* mengeluarkan berapa banyak elemen bernilai true di array sebelah kiri elemen arr[kolel] - kecuali kolom terakhir*/
+		/* mengeluarkan berapa banyak elemen bernilai $ di array sebelah kiri elemen arr[kolel] - kecuali kolom terakhir*/
 		int count = 0;
 		for (int i=kolel+1; i<kolom-1; i++) {
 			if (arr[i]=="$") {
@@ -426,8 +435,13 @@ public class MatSPL {
 			}
 		}
 		double denum = kofaktor(MatX);
+		System.out.println("isi nama file: ");
+		Scanner sc = new Scanner(System.in);
+		String alamat = sc.next();
 		try {
-			PrintStream outfile = new PrintStream(new File ("outputCrammer.txt"));
+			PrintStream outfile = new PrintStream(new File (alamat));
+			System.out.println("Hasil perhitungan SPL dengan menggunakan metode Crammer: ");
+			outfile.println("Hasil perhitungan SPL dengan menggunakan metode Crammer: ");
 			if (denum != 0) {
 				double[] arrHasil = new double[baris];
 				for (int k=0; k<baris; k++) {
@@ -474,8 +488,13 @@ public class MatSPL {
 				i=i+1;
 			}
 		}
+		System.out.println("isi nama file: ");
+		Scanner sc = new Scanner(System.in);
+		String alamat = sc.next();
 		try {
-			PrintStream outfile = new PrintStream(new File ("outputGaussJordan.txt"));
+			PrintStream outfile = new PrintStream(new File (alamat));
+			System.out.println("Hasil perhitungan SPL dengan menggunakan metode Gauss-Jordan: ");
+			outfile.println("Hasil perhitungan SPL dengan menggunakan metode Gauss-Jordan: ");
 			if(countBrsNol==0 && banyakBukanNolBaris(Mat,(baris-countBrsNol-1),kolom)==0) {
 				System.out.println("SPL tidak memiliki solusi");
 				outfile.println("SPL tidak memiliki solusi");
