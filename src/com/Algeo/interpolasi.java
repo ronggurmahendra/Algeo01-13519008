@@ -80,7 +80,7 @@ public class interpolasi {
         SPL = SPLGauss.SPLGauss(M, n, n+1);
 
         //tulis persamaan polinomnya
-        System.out.println("Persamaan interpolasi polinomnya : ");
+        System.out.println("Persamaan polinom interpolasi : ");
         System.out.print("p(x) = ");
         for (i = 0; i < n; i++){
             if (i == 0){
@@ -115,7 +115,7 @@ public class interpolasi {
             alamat2 = in.next();
             PrintStream outfile = new PrintStream(new File (alamat2));
             //tulis persamaan polinomnya
-            outfile.println("Persamaan interpolasi polinomnya : ");
+            outfile.println("Persamaan polinom interpolasi  : ");
             outfile.print("p(x) = ");
             for (i = 0; i < n; i++){
                 if (i == 0){

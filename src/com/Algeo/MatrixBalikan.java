@@ -164,7 +164,7 @@ public class MatrixBalikan {
                 }   
             }
         }
-
+        System.out.println(" ");
         //salin matriks ke file
         try {
             String alamat2;
