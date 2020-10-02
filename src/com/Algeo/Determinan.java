@@ -157,16 +157,13 @@ public class Determinan {
             System.out.println();
         }
     }
-    public static void tulisFile(double[][] matriks){
+    public static void tulisFile(double hasil,String directory){
         try {
-            PrintStream outfile = new PrintStream(new File ("OutputDeterminan.txt"));
+            PrintStream outfile = new PrintStream(new File (directory));
             //tulis persamaan polinomnya
-            for (int i = 0; i < matriks.length;i++){
-                for (int j = 0; j < matriks[i].length;j++){
-                    outfile.printf("%.2f ",matriks[i][j]);
-                }
-                outfile.println();
-            }
+
+            outfile.print("hasil Determinan Matriks tersebut adalah : ");
+            outfile.print(hasil);
             outfile.close();
         } catch (FileNotFoundException e) {
             System.out.println("Tidak dapat membuka file untuk ditulis");

@@ -198,12 +198,24 @@ public class Main {
                 }
 
                 //determinan.tulisMatriks(matriks);
-                if (inputDeterminan == 1){
-                    System.out.print("Determinan Matriks dengan kofaktor = ");
-                    System.out.println(determinan.kofaktor(matriks));
-                }else if (inputDeterminan == 2){
-                    System.out.print("Determinan Matriks dengan OBE = ");
-                    System.out.println(determinan.OBE(matriks));
+
+				if (input == 1){
+					if (inputDeterminan == 1){
+						System.out.print("Determinan Matriks dengan kofaktor = ");
+						System.out.println(determinan.kofaktor(matriks));
+					}else if (inputDeterminan == 2){
+						System.out.print("Determinan Matriks dengan OBE = ");
+						System.out.println(determinan.OBE(matriks));
+					}
+				}else {
+					String dir =  "C:\\test\\OutputDeterminan1.txt";
+					if (inputDeterminan == 1){
+						determinan.tulisFile(determinan.kofaktor(matriks),dir);
+					}else if (inputDeterminan == 2){
+						determinan.tulisFile(determinan.OBE(matriks),dir);
+					}
+
+
 				}
 				Menu();
                 break;
@@ -236,8 +248,14 @@ public class Main {
                     matriksRegresi = regresiLinear.bacaFile();
                 }
                 double[] hasil;
-                hasil = regresiLinear.regresiLinear(matriksRegresi);
-				regresiLinear.tulisMatriks(hasil);
+				hasil = regresiLinear.regresiLinear(matriksRegresi);
+				String dir =  "C:\\test\\OutputRegresiLinier2.txt";
+				if (inputregresiLinear == 1){
+					regresiLinear.tulisMatriks(hasil);
+				}else {
+					regresiLinear.tulisFile(hasil,dir);
+				}
+
 				Menu();
                 break;
             case 6:

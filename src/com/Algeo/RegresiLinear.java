@@ -109,9 +109,9 @@ public class RegresiLinear {
             }
         }
     }
-    public static void tulisFile(double[] matriks){
+    public static void tulisFile(double[] matriks,String directory){
         try {
-            PrintStream outfile = new PrintStream(new File ("OutputDeterminan.txt"));
+            PrintStream outfile = new PrintStream(new File (directory));
             //tulis persamaan polinomnya
 
             outfile.print("y = ");
