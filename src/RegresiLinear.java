@@ -1,9 +1,7 @@
-package com.Algeo;
+//package com.Algeo;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
 public class RegresiLinear {
 
@@ -62,6 +60,7 @@ public class RegresiLinear {
             double [][] pass = new double [0][0];
             return pass;
         }
+
 
     }
 

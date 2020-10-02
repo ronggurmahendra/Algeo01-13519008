@@ -1,9 +1,7 @@
-package com.Algeo;
+//package com.Algeo;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class Determinan {
     public double kofaktor(double[][] MatriksInput) {

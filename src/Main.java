@@ -1,5 +1,5 @@
-package com.Algeo;
-import java.util.Scanner;
+//package com.Algeo;
+import java.util.*;
 import java.io.*;
 
 public class Main {
@@ -70,7 +70,7 @@ public class Main {
 									i++;
 								}
 								inFile1.close();
-							} catch (Exception e) {
+							} catch (FileNotFoundException e) {
 								System.out.println("File tidak ditemukan");
 							}
 							/* menampilkan solusi SPL */
@@ -116,7 +116,7 @@ public class Main {
 									i++;
 								}
 								inFile2.close();
-							} catch (Exception e) {
+							} catch (FileNotFoundException e) {
 								System.out.println("File tidak ditemukan");
 							}
 							/* menampilkan solusi SPL */
@@ -167,7 +167,7 @@ public class Main {
 									i++;
 								}
 								inFile3.close();
-							} catch (Exception e) {
+							} catch (FileNotFoundException e) {
 								System.out.println("File tidak ditemukan");
 							}
 							/* menampilkan solusi SPL */

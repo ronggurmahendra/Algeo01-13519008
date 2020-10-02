@@ -1,6 +1,6 @@
-package com.Algeo;
+//package com.Algeo;
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 
 
 /**

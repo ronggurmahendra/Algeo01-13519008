@@ -1,8 +1,6 @@
-package com.Algeo;
-import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
+//package com.Algeo;
+import java.util.*;
+import java.io.*;
 
 
 public class MatSPL {
@@ -304,10 +302,12 @@ public class MatSPL {
 				}
 			}
 			outfile.close();
+			sc.close();
 		}
 		catch (FileNotFoundException e) {
             System.out.println("Tidak dapat membuka file untuk ditulis");
-        }
+		}
+
 	}
 	
 	int barisMana$(double[][] Mat, int $, int baris, int kolom) {
@@ -470,10 +470,12 @@ public class MatSPL {
 				outfile.println("SPL tidak memiliki solusi tunggal (unik)");
 			}
 			outfile.close();
+			sc.close();
 		}
 		catch (FileNotFoundException e) {
             System.out.println("Tidak dapat membuka file untuk ditulis");
-        }
+		}
+		
 	}
 	
 	void solusiSPLGaussJordan(double[][] Mat, int baris, int kolom) {
@@ -584,10 +586,12 @@ public class MatSPL {
 					outfile.println(solusi[i]);
 				}
 			}
+			
 		}
 		catch (FileNotFoundException e) {
             System.out.println("Tidak dapat membuka file untuk ditulis");
-        }
+		}
+		
 	}
 	
 	int banyakTidakNolSesudahElmt(double[][] Mat, int kolapa, int bar, int kolom) {
