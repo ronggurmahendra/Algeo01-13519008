@@ -24,5 +24,5 @@ java.io.*
 4. jika sudah selesai menggukanan pilih menu 6 dan program akan tertutup dengan sendiri nya
 
 *jika ingin menggunakan fitur baca file / tulis file
-pergi ke file main.java lalu masukan pada variabel dir directory file input yang ingin di test dan file output yang akan ditulikan jawabanya
+pergi ke file main.java lalu masukan pada variabel dir, directory file input yang ingin di test dan file output yang akan ditulikan jawabanya
 
