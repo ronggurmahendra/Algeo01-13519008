@@ -167,7 +167,10 @@ public class MatrixBalikan {
 
         //salin matriks ke file
         try {
-            PrintStream outfile = new PrintStream(new File ("output.txt"));
+            String alamat2;
+            System.out.print("Masukkan nama file hasil eksekusi : ");
+            alamat2 = in.next();
+            PrintStream outfile = new PrintStream(new File (alamat2));
             if (det == 0){
                 outfile.println("Matriks Balikan Tidak Ada");
             } else {

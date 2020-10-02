@@ -110,7 +110,10 @@ public class interpolasi {
 
         //salin hasil pada file
         try {
-            PrintStream outfile = new PrintStream(new File ("output.txt"));
+            String alamat2;
+            System.out.print("Masukkan nama file hasil eksekusi : ");
+            alamat2 = in.next();
+            PrintStream outfile = new PrintStream(new File (alamat2));
             //tulis persamaan polinomnya
             outfile.println("Persamaan interpolasi polinomnya : ");
             outfile.print("p(x) = ");
