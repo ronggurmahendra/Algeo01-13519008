@@ -237,6 +237,7 @@ public class Main {
                 }
                 double[] hasil;
                 hasil = regresiLinear.regresiLinear(matriksRegresi);
+                /*
                 System.out.print("y = ");
                 for(int i = 0;i < hasil.length;i++){
                     System.out.printf("%.2f ", hasil[i]);
@@ -248,10 +249,8 @@ public class Main {
                     if(i != hasil.length-1){
                         System.out.print(" + ");
                     }
-
-                }
-
-				//System.out.print(hasil[hasil.length]);
+                }*/
+				regresiLinear.tulisMatriks(hasil);
 				Menu();
                 break;
             case 6:

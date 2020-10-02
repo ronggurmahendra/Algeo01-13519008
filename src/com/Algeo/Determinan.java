@@ -2,6 +2,7 @@ package com.Algeo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class Determinan {
@@ -156,4 +157,20 @@ public class Determinan {
             System.out.println();
         }
     }
+    public static void tulisFile(double[][] matriks){
+        try {
+            PrintStream outfile = new PrintStream(new File ("OutputDeterminan.txt"));
+            //tulis persamaan polinomnya
+            for (int i = 0; i < matriks.length;i++){
+                for (int j = 0; j < matriks[i].length;j++){
+                    outfile.printf("%.2f ",matriks[i][j]);
+                }
+                outfile.println();
+            }
+            outfile.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Tidak dapat membuka file untuk ditulis");
+        }
+    }
+
 }

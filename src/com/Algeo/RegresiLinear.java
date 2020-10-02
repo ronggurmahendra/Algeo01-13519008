@@ -2,6 +2,7 @@ package com.Algeo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class RegresiLinear {
@@ -93,13 +94,42 @@ public class RegresiLinear {
     }
 
     public static void tulisMatriks(double[][] matriks) {
-        System.out.println();
-        for (int i = 0; i < matriks.length; i++) {
-            for (int j = 0; j < matriks[i].length; j++) {
-                System.out.printf("Matriks[%d][%d] = %.2f ",i,j, matriks[i][j]);
+        System.out.print("y = ");
+        for(int i = 0;i < matriks.length;i++){
+            System.out.printf("%.2f ", matriks[i]);
+
+            if (i != 0) {
+                System.out.print(" X");
+                System.out.print(i);
             }
-            System.out.println();
+            if(i != matriks.length-1){
+                System.out.print(" + ");
+            }
+    }
+    public static void tulisFile(double[][] matriks){
+        try {
+            PrintStream outfile = new PrintStream(new File ("OutputDeterminan.txt"));
+            //tulis persamaan polinomnya
+
+            outfile.print("y = ");
+            for(int i = 0;i < matriks.length;i++){
+                outfile.printf("%.2f ", matriks[i]);
+
+                if (i != 0) {
+                    outfile.print(" X");
+                    outfile.print(i);
+                }
+                if(i != matriks.length-1){
+                    outfile.print(" + ");
+                }
+
+            }
+            outfile.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Tidak dapat membuka file untuk ditulis");
         }
     }
+
+
 
 }
